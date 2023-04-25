@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  background-image: url(../PRO/f4.jpg);
+}
+* {
+  box-sizing: border-box;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: aqua;
+  font-size: 18px;
+  transition: 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+ul li:nth-child(odd) {
+  background: hotpink;
+}
+ul li:hover {
+  background: lightsalmon;
+}
+ul li.checked {
+  background: chartreuse;
+  color: #fff;
+  text-decoration: line-through;
+}
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg); 
+  height: 15px;
+  width: 7px;
+}
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: coral;
+  color: white;
+}
+
+.header {
+  background-color: blue;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: yellow;
+  color: darkblue;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+.addBtn:hover {
+  background-color: violet;
+}
+.x1{
+  height: 30px;
+  width: 140px;
+  background-color: plum;
+  position: relative;
+  top: 10px;
+}
+#div1{
+  width: 33.33%;
+  float: right;
+}
+#div2{
+  width: 33.33%;
+  float: left;
+}
+#div3{
+   width: 33.33%;
+   float: right;
+ }
+#div4{
+    width: 33.33%;
+    float: right;
+}
+#div5{
+    width: 33.33%;
+    float: left;
+}
+#div6{
+    width: 33.33%;
+    float: right;
+}
+
+      
+</style>
+
+</head>
+<body style="background-color: blueviolet;">
+  
+  <!-- <div class="x1">
+ <a href="MAIN.html">BACK TO HOME </a>
+</div><br> -->
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">My To Do List</h2>
+  <input type="text" id="myInput" placeholder="Write the title">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+
+<ul id="myUL">
+  <li>Assignments</li>
+  <li class="checked">Submit Project</li>
+  <li>Read a book</li>
+  <li>Make bed</li>
+</ul>
+
+<script>
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script><br>
+<h1>JOURNALISING IDEAS</h1><br>
+    
+     <div class="int">
+        
+    <form >
+        <div id="div1">
+        <fieldset style="height: 250px;width: 250px;border: 2px solid rgb(19, 19, 37);;">
+            <legend style="background-color: rgb(177, 227, 227); ">GOAL</legend>
+             <textarea id="goals" name="goals" placeholder="write your goals......." cols="35" rows="13" ></textarea>
+        </fieldset><br>
+        </div>
+
+        <div id="div2">
+        <fieldset style="height: 250px;width: 250px;border: 2px solid rgb(117, 117, 227);border: 2px solid rgb(19, 19, 37);;">
+            <legend style="background-color: rgb(156, 209, 236);">DAILY LOG</legend>
+             <textarea id="dailylog" name="daiylog" placeholder="Write your Daily log........" cols="35" rows="13"></textarea>
+        </fieldset><br>
+        </div>
+
+         <div id="div3">
+        <fieldset style="height: 250px;width: 250px;border: 2px solid rgb(19, 19, 37);">
+            <legend style="background-color: rgb(227, 177, 215); ">GRATEFUL FOR</legend>
+             <textarea id="greatfulthings" name="greatfulthings" placeholder="Journal three things You're grateful for....." cols="35" rows="13"></textarea>
+        </fieldset><br>
+        </div>
+
+        <div id="div4">
+        <fieldset style="height: 250px;width: 250px;border: 2px solid rgb(19, 19, 37);;">
+            <legend style="background-color: rgb(195, 175, 224);; ">YOUR PROBLEM</legend>
+             <textarea id="problem" name="problem" placeholder="Journal your problem...." cols="35" rows="13"></textarea>
+        </fieldset><br>
+    </div>
+         
+         <div id="div5">
+        <fieldset style="height: 250px;width: 250px;border: 2px solid rgb(19, 19, 37);;">
+            <legend style="background-color: rgb(117, 222, 178); ">STRESS</legend>
+             <textarea id="stress" name="stress" placeholder="Journal your Stresses...." cols="35" rows="13"></textarea>
+        </fieldset><br>
+    </div>
+     
+    <div id="div6">
+        <fieldset style="height: 250px;width: 250px;border: 2px solid rgb(19, 19, 37);;">
+            <legend style="background-color: rgba(190, 222, 104, 0.76); ">BEST THINGS THAT HAS HAPPEND TODAY</legend>
+             <textarea id="bestthing" name="bestthing" placeholder="What's the best thing that has happend today?...." cols="35" rows="13"></textarea>
+        </fieldset>
+    </div> 
+        
+    </form>
+    </div><br>
+
+
+</body>
+</html>
